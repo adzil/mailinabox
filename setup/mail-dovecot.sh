@@ -29,8 +29,8 @@ apt_install \
 	dovecot-sieve dovecot-managesieved dovecot-lucene
 
 # Copy precompiled library files
-cp ppa/dovecot/lib21_fts_lucene_plugin.so /usr/lib/dovecot/modules
-cp ppa/dovecot/lib20_doveadm_fts_lucene_plugin.so /usr/lib/dovecot/modules/doveadm
+cp ppa/lib21_fts_lucene_plugin.so /usr/lib/dovecot/modules
+cp ppa/lib20_doveadm_fts_lucene_plugin.so /usr/lib/dovecot/modules/doveadm
 
 # The `dovecot-imapd`, `dovecot-pop3d`, and `dovecot-lmtpd` packages automatically
 # enable IMAP, POP and LMTP protocols.
