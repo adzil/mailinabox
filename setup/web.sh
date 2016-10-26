@@ -52,7 +52,7 @@ tools/editconf.py /etc/php/7.0/fpm/php.ini -c ';' \
         cgi.fix_pathinfo=0
 
 # Bump up PHP's max_children to support more concurrent connections
-tools/editconf.py /etc/php5/fpm/pool.d/www.conf -c ';' \
+tools/editconf.py /etc/php/7.0/fpm/pool.d/www.conf -c ';' \
 	pm.max_children=8
 
 # Other nginx settings will be configured by the management service
