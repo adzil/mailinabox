@@ -22,6 +22,10 @@ apt_install nginx php-fpm
 
 rm -f /etc/nginx/sites-enabled/default
 
+# Modify nginx default SSL configurations
+sed -i "s/^\(\s*\)ssl_protocols/\1# ssl_protocols/g" /etc/nginx/nginx.conf && \
+	sed -i "s/^\(\s*\)ssl_prefer_server_ciphers/\1# ssl_prefer_server_ciphers/g" /etc/nginx/nginx.conf
+
 # Copy in a nginx configuration file for common and best-practices
 # SSL settings from @konklone. Replace STORAGE_ROOT so it can find
 # the DH params.
