@@ -24,6 +24,10 @@ function hide_output {
 	rm -f $OUTPUT
 }
 
+function hide_output_forced {
+	$@ &> /dev/null
+}
+
 function apt_get_quiet {
 	# Run apt-get in a totally non-interactive mode.
 	#
@@ -133,7 +137,7 @@ function ufw_allow {
 }
 
 function restart_service {
-	hide_output service $1 restart
+	hide_output_forced service $1 restart
 }
 
 ## Dialog Functions ##
