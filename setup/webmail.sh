@@ -22,8 +22,8 @@ source /etc/mailinabox.conf # load global vars
 echo "Installing Roundcube (webmail)..."
 apt_install \
 	dbconfig-common \
-	php5 php5-sqlite php5-mcrypt php5-intl php5-json php5-common php-auth php-net-smtp php-net-socket php-net-sieve php-mail-mime php-crypt-gpg php5-gd php5-pspell \
-	tinymce libjs-jquery libjs-jquery-mousewheel libmagic1
+    php php-sqlite3 php-mcrypt php-intl php-json php-common php-auth php-net-smtp php-net-socket php-net-sieve php-mail-mime php-crypt-gpg php-gd php-pspell \
+    tinymce libjs-jquery libjs-jquery-mousewheel libmagic1
 apt_get_quiet remove php-mail-mimedecode # no longer needed since Roundcube 1.1.3
 
 # We used to install Roundcube from Ubuntu, without triggering the dependencies #NODOC
@@ -102,7 +102,7 @@ cat > /usr/local/lib/roundcubemail/config/config.inc.php <<EOF;
 \$config['product_name'] = '$PRIMARY_HOSTNAME Webmail';
 \$config['des_key'] = '$SECRET_KEY';
 \$config['plugins'] = array('html5_notifier', 'archive', 'zipdownload', 'password', 'managesieve', 'jqueryui', 'vacation_sieve', 'persistent_login');
-\$config['skin'] = 'classic';
+\$config['skin'] = 'larry';
 \$config['login_autocomplete'] = 2;
 \$config['password_charset'] = 'UTF-8';
 \$config['junk_mbox'] = 'Spam';
@@ -167,5 +167,5 @@ if [ -f $STORAGE_ROOT/mail/roundcube/roundcube.sqlite ]; then
 fi
 
 # Enable PHP modules.
-php5enmod mcrypt
-restart_service php5-fpm
+phpenmod mcrypt
+restart_service php-fpm

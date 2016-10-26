@@ -78,6 +78,7 @@ def do_web_update(env):
 	nginx_conf += make_domain_config(env['PRIMARY_HOSTNAME'], [template0, template1, template2], ssl_certificates, env)
 
 	# Add configuration all other web domains.
+	""" FUCK YOU, DON'T NEED THIS SHIT
 	has_root_proxy_or_redirect = get_web_domains_with_root_overrides(env)
 	web_domains_not_redirect = get_web_domains(env, include_www_redirects=False)
 	for domain in get_web_domains(env):
@@ -93,7 +94,7 @@ def do_web_update(env):
 		else:
 			# Add default 'www.' redirect.
 			nginx_conf += make_domain_config(domain, [template0, template3], ssl_certificates, env)
-
+	"""
 	# Did the file change? If not, don't bother writing & restarting nginx.
 	nginx_conf_fn = "/etc/nginx/conf.d/local.conf"
 	if os.path.exists(nginx_conf_fn):

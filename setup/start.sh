@@ -4,7 +4,7 @@
 
 source setup/functions.sh # load our functions
 
-# Check system setup: Are we running as root on Ubuntu 14.04 on a
+# Check system setup: Are we running as root on Ubuntu 16.04 on a
 # machine with enough memory? Is /tmp mounted with exec.
 # If not, this shows an error and exits.
 source setup/preflight.sh
@@ -106,8 +106,9 @@ source setup/dkim.sh
 source setup/spamassassin.sh
 source setup/web.sh
 source setup/webmail.sh
-source setup/owncloud.sh
-source setup/zpush.sh
+# We fuckin don't need this
+#source setup/owncloud.sh
+#source setup/zpush.sh
 source setup/management.sh
 source setup/munin.sh
 

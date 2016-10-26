@@ -80,13 +80,14 @@ fi
 # the [mail-in-a-box ppa](https://launchpad.net/~mail-in-a-box/+archive/ubuntu/ppa).
 
 
-if [ ! -f /usr/bin/add-apt-repository ]; then
-	echo "Installing add-apt-repository..."
-	hide_output apt-get update
-	apt_install software-properties-common
-fi
+#if [ ! -f /usr/bin/add-apt-repository ]; then
+#	echo "Installing add-apt-repository..."
+#	hide_output apt-get update
+#	apt_install software-properties-common
+#fi
 
-hide_output add-apt-repository -y ppa:mail-in-a-box/ppa
+# We don't need this anymore
+#hide_output add-apt-repository -y ppa:mail-in-a-box/ppa
 
 # ### Update Packages
 
@@ -197,8 +198,8 @@ fi
 # hardware entropy to get going, by drawing from /dev/random. haveged makes this
 # less likely to stall for very long.
 
-echo Initializing system random number generator...
-dd if=/dev/random of=/dev/urandom bs=1 count=32 2> /dev/null
+#echo Initializing system random number generator...
+#dd if=/dev/random of=/dev/urandom bs=1 count=32 2> /dev/null
 
 # This is supposedly sufficient. But because we're not sure if hardware entropy
 # is really any good on virtualized systems, we'll also seed from Ubuntu's
@@ -226,7 +227,8 @@ EOF
 # we skip this if the user sets DISABLE_FIREWALL=1. #NODOC
 if [ -z "$DISABLE_FIREWALL" ]; then
 	# Install `ufw` which provides a simple firewall configuration.
-	apt_install ufw
+	# Commented out because ufw is already available on Ubuntu 16.04
+	#apt_install ufw
 
 	# Allow incoming connections to SSH.
 	ufw_allow ssh;
