@@ -28,6 +28,9 @@ apt_install \
 	dovecot-core dovecot-imapd dovecot-pop3d dovecot-lmtpd dovecot-sqlite sqlite3 \
 	dovecot-sieve dovecot-managesieved dovecot-lucene
 
+# Install required lib*dev modules required by our precompiled modules
+apt_install libclucene-dev libstemmer-dev
+
 # Copy precompiled library files
 cp ppa/lib21_fts_lucene_plugin.so /usr/lib/dovecot/modules
 cp ppa/lib20_doveadm_fts_lucene_plugin.so /usr/lib/dovecot/modules/doveadm
