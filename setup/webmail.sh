@@ -82,6 +82,9 @@ SECRET_KEY=$(dd if=/dev/urandom bs=1 count=18 2>/dev/null | base64 | fold -w 24 
 # For security, temp and log files are not stored in the default locations
 # which are inside the roundcube sources directory. We put them instead
 # in normal places.
+#
+# Modify: The PHP7 now checks for the imap and smtp certs so give them the
+# right domain name
 cat > /usr/local/lib/roundcubemail/config/config.inc.php <<EOF;
 <?php
 /*
@@ -91,10 +94,10 @@ cat > /usr/local/lib/roundcubemail/config/config.inc.php <<EOF;
 \$config['log_dir'] = '/var/log/roundcubemail/';
 \$config['temp_dir'] = '/tmp/roundcubemail/';
 \$config['db_dsnw'] = 'sqlite:///$STORAGE_ROOT/mail/roundcube/roundcube.sqlite?mode=0640';
-\$config['default_host'] = 'ssl://localhost';
+\$config['default_host'] = 'ssl://$PRIMARY_HOSTNAME';
 \$config['default_port'] = 993;
 \$config['imap_timeout'] = 15;
-\$config['smtp_server'] = 'tls://127.0.0.1';
+\$config['smtp_server'] = 'tls://$PRIMARY_HOSTNAME';
 \$config['smtp_port'] = 587;
 \$config['smtp_user'] = '%u';
 \$config['smtp_pass'] = '%p';
