@@ -109,6 +109,7 @@ cat > /usr/local/lib/roundcubemail/config/config.inc.php <<EOF;
 \$config['login_autocomplete'] = 2;
 \$config['password_charset'] = 'UTF-8';
 \$config['junk_mbox'] = 'Spam';
+\$config['htmleditor'] = 1;
 ?>
 EOF
 
